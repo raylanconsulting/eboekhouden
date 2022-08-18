@@ -1,44 +1,75 @@
 # eboekhouden
 e-boekhouden.nl API
+---
 
-A way to use these files could be by entering the next code:
+### A way to use these files could be by entering the next code:
 
-# 
+---
 
-from eboek import Eboek, Facturen, Grootboekrekeningen, Kostenplaatsen, Relaties, Saldi, Saldo, Mutaties
+`from eboek import Eboek, Facturen, Grootboekrekeningen, Kostenplaatsen, Relaties, Saldi, Saldo, Mutaties`
 
-# where username is your "Gebruikersnaam" with e-boekhouden.nl
-# SecurityCode1 and -2 are the Beveiligingscode 1 and -2 you can enter here as a string
-Username = "raylanconsulting"
-SecurityCode1 = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-SecurityCode2 = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"
+(where username is your "Gebruikersnaam" with e-boekhouden.nl. SecurityCode1 and SecurityCode2 are the Beveiligingscode 1 and -2 you can enter here as a string)
+---
 
-# generate the session code
-sessie1 = Eboek(Username, SecurityCode1, SecurityCode2)
-print(sessie1.session_id)
+`Username = "raylanconsulting"`
 
-# use this session code to fetch data
-# get saldi
-saldi_fin = Saldi(0,"2022-01-01","2022-03-31","VW")
-saldi = sessie1.get_saldi(saldi_fin)
-print(saldi)
+`SecurityCode1 = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"`
+
+`SecurityCode2 = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"`
+
+---
+
+### generate the session code
+`sessie1 = Eboek(Username, SecurityCode1, SecurityCode2)`
+
+`print(sessie1.session_id)`
+
+---
+
+### use this session code to fetch data
+---
+get saldi
+
+`saldi_fin = Saldi(0,"2022-01-01","2022-03-31","VW")`
+
+`saldi = sessie1.get_saldi(saldi_fin)`
+
+`print(saldi)`
 
 
-# get grootboekrekeningen
-lijst_grootboekrekeningen = Grootboekrekeningen(0,"","VW")
-grootboekrekeningen = sessie1.get_grootboekrekeningen(lijst_grootboekrekeningen)
-print(grootboekrekeningen)
+### get grootboekrekeningen
+---
+`lijst_grootboekrekeningen = Grootboekrekeningen(0,"","VW")`
 
-# get relaties
-lijst_relaties = Relaties("","",0)
-relaties = sessie1.get_relaties(lijst_relaties)
-print(relaties)
+`grootboekrekeningen = sessie1.get_grootboekrekeningen(lijst_grootboekrekeningen)`
 
-# get open posten
-lijst_openposten = sessie1.get_openposten("Crediteuren")
-print(lijst_openposten)
+`print(grootboekrekeningen)`
 
-# get mutaties
+---
+
+### get relaties
+---
+
+`lijst_relaties = Relaties("","",0)`
+
+`relaties = sessie1.get_relaties(lijst_relaties)`
+
+`print(relaties)`
+
+---
+
+### get open posten
+
+---
+
+`lijst_openposten = sessie1.get_openposten("Crediteuren")`
+
+`print(lijst_openposten)`
+
+---
+
+### get mutaties
+---
 lijst_mutaties = Mutaties(0,0,99999,"", "2022-01-01","2022-03-31")
 mutaties = sessie1.get_mutaties(lijst_mutaties)
 print(mutaties)
