@@ -11,7 +11,7 @@ e-boekhouden.nl API
 #### (where username is your "Gebruikersnaam" with e-boekhouden.nl. SecurityCode1 and SecurityCode2 are the Beveiligingscode 1 and -2 you can enter here as a string)
 ---
 
-`Username = "raylanconsulting"`
+`Username = "myusername"`
 
 `SecurityCode1 = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"`
 
