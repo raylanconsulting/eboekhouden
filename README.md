@@ -99,7 +99,7 @@ e-boekhouden.nl API
 ---
 
 ## adding transactions and master data
-### master data
+### Master data
 ---
 
 ### add relatie
@@ -121,6 +121,8 @@ e-boekhouden.nl API
 
 `print(nieuwerekening)`
 
+---
+### Transactions
 ---
 ### add mutatie
 ---
