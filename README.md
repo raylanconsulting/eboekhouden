@@ -38,6 +38,15 @@ e-boekhouden.nl API
 `print(saldi)`
 
 ---
+
+### get saldo
+`saldo_fin = Saldo("1020",0,"2001-01-01", "2022-08-19")`
+
+`saldo = sessie1.get_saldo(saldo_fin)`
+
+`print(saldo)`
+
+---
 ### get grootboekrekeningen
 ---
 `lijst_grootboekrekeningen = Grootboekrekeningen(0,"","VW")`
