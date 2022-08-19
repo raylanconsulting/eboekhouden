@@ -6,7 +6,6 @@ from grootboekrekening import Grootboekrekening
 
 # the get classes
 
-
 class Facturen:
     def __init__(
         self,
@@ -188,11 +187,11 @@ class Eboek:
         self.session_id = session["SessionID"]
 
     # add methods
-    def add_factuur(self, factuur: Factuur):
-        exported_factuur = factuur.export()
-        params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, oFact=exported_factuur)
-        response = self.client.service.AddFactuur(**params)
-        return response
+    # def add_factuur(self, factuur: Factuur):
+    #     exported_factuur = factuur.export()
+    #     params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, oFact=exported_factuur)
+    #     response = self.client.service.AddFactuur(**params)
+    #     return response
     
     def add_grootboekrekening(self, grootboekrekening: Grootboekrekening):
         exported_grootboekrekening = grootboekrekening.export()
@@ -200,13 +199,11 @@ class Eboek:
         response = self.client.service.AddGrootboekrekening(**params)
         return response
     
-    
     def add_mutatie(self, mutatie: Mutatie):
         exported_mutatie = mutatie.export()
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, oMut=exported_mutatie)
         response = self.client.service.AddMutatie(**params)
         return response
-    
     
     def add_relatie(self, relatie: Relatie):
         exported_relatie = relatie.export()
@@ -217,6 +214,10 @@ class Eboek:
     
     # get methods
     def get_administraties(self):
+        """This function collects linked administrations.
+
+        Filter on: (SessionID, SecurityCode2)
+        """
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2)
         response = self.client.service.GetAdministraties(**params)
         return response
@@ -234,7 +235,7 @@ class Eboek:
 
     def get_facturen(self, facturen: Facturen):
         """
-        Filter on: (Id, Code, Categorie)
+        Filter on: (Factuurnummer, Relatiecode, DatumVa, DatumTm)
         """
         exported_facturen = facturen.export()
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, cFilter=exported_facturen)
@@ -264,7 +265,7 @@ class Eboek:
 
     def get_mutaties(self, mutaties: Mutaties):
         """
-        Filter on: (Id, Code, Categorie)
+        Filter on: (MutatieNr, MutatieNrVan, MutatieNrTm, Factuurnummer, DatumVan, DatumTm)
         """
         exported_mutaties = mutaties.export()
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, cFilter=exported_mutaties)
@@ -289,7 +290,7 @@ class Eboek:
 
     def get_relaties(self, relaties: Relaties):
         """
-        Filter on: (KostenPlaatsId, DatumVan, DatumTot, Categorie)
+        Filter on: (Trefwoord, Code, ID)
         """
         exported_relaties = relaties.export()
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, cFilter=exported_relaties)
@@ -305,6 +306,7 @@ class Eboek:
         params = dict(SessionID=self.session_id, SecurityCode2=self.security_code_2, cFilter=exported_saldi)
         response = self.client.service.GetSaldi(**params)
         return response    
+
 
     def get_saldo(self, saldo: Saldo):
         """
