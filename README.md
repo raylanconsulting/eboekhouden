@@ -123,6 +123,7 @@ This code can be pulled from pypi.org by installing the package "eboekhouden_api
 `print(administratie)`
 
 the output is still a bit unstructured, but that could be solved in a next project ;-)
+
 ![example output](outputexample.JPG)
 ---
 
