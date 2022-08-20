@@ -77,7 +77,7 @@ e-boekhouden.nl API
 
 ---
 
-`lijst_openposten = sessie1.eboek.get_openposten("Crediteuren")`
+`lijst_openposten = sessie1.get_openposten("Crediteuren")`
 
 `print(lijst_openposten)`
 
