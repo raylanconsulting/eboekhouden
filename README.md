@@ -1,8 +1,12 @@
 # eboekhouden
 e-boekhouden.nl API
 ---
+--- 
+This code can be pulled from pypi.org by installing the package "eboekhouden_api"
+> pip install eboekhouden_api
+---
 
-### A way to use these files could be by entering the next code:
+### example code how to use the package is shown below
 
 ---
 
