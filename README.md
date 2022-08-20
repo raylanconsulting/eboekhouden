@@ -112,6 +112,13 @@ e-boekhouden.nl API
 `print(fact)`
 
 ---
+### get administraties
+---
+`administratie = sessie1.get_administraties()`
+
+`print(administratie)`
+
+---
 
 ## adding transactions and master data
 ### Master data
