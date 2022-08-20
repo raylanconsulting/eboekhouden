@@ -6,7 +6,13 @@ e-boekhouden.nl API
 
 ---
 
-`from eboek import Eboek, Facturen, Grootboekrekeningen, Kostenplaatsen, Relaties, Saldi, Saldo, Mutaties`
+`from eboekhouden_api import eboek`
+
+`import logging`
+
+`# to swith of Soap logging messages: "Forcing soap:address location to HTTPS"`
+
+`logging.getLogger('zeep.wsdl.bindings.soap').setLevel(logging.ERROR)`
 
 #### (where username is your "Gebruikersnaam" with e-boekhouden.nl. SecurityCode1 and SecurityCode2 are the Beveiligingscode 1 and -2 you can enter here as a string)
 ---
@@ -20,7 +26,7 @@ e-boekhouden.nl API
 ---
 
 ### generate the session code
-`sessie1 = Eboek(Username, SecurityCode1, SecurityCode2)`
+`sessie1 = eboek.Eboek(Username, SecurityCode1, SecurityCode2)`
 
 `print(sessie1.session_id)`
 
@@ -31,7 +37,7 @@ e-boekhouden.nl API
 ### get saldi
 ---
 
-`saldi_fin = Saldi(0,"2022-01-01","2022-03-31","VW")`
+`saldi_fin = eboek.Saldi(0,"2022-01-01","2022-03-31","VW")`
 
 `saldi = sessie1.get_saldi(saldi_fin)`
 
@@ -40,7 +46,7 @@ e-boekhouden.nl API
 ---
 
 ### get saldo
-`saldo_fin = Saldo("1020",0,"2001-01-01", "2022-08-19")`
+`saldo_fin = eboek.Saldo("1020",0,"2001-01-01", "2022-08-19")`
 
 `saldo = sessie1.get_saldo(saldo_fin)`
 
@@ -49,7 +55,7 @@ e-boekhouden.nl API
 ---
 ### get grootboekrekeningen
 ---
-`lijst_grootboekrekeningen = Grootboekrekeningen(0,"","VW")`
+`lijst_grootboekrekeningen = eboek.Grootboekrekeningen(0,"","VW")`
 
 `grootboekrekeningen = sessie1.get_grootboekrekeningen(lijst_grootboekrekeningen)`
 
@@ -59,7 +65,7 @@ e-boekhouden.nl API
 ### get relaties
 ---
 
-`lijst_relaties = Relaties("","",0)`
+`lijst_relaties = eboek.Relaties("","",0)`
 
 `relaties = sessie1.get_relaties(lijst_relaties)`
 
@@ -71,7 +77,7 @@ e-boekhouden.nl API
 
 ---
 
-`lijst_openposten = sessie1.get_openposten("Crediteuren")`
+`lijst_openposten = sessie1.eboek.get_openposten("Crediteuren")`
 
 `print(lijst_openposten)`
 
@@ -79,7 +85,7 @@ e-boekhouden.nl API
 
 ### get mutaties
 ---
-`lijst_mutaties = Mutaties(0,0,99999,"", "2022-01-01","2022-03-31")`
+`lijst_mutaties = eboek.Mutaties(0,0,99999,"", "2022-01-01","2022-03-31")`
 
 `mutaties = sessie1.get_mutaties(lijst_mutaties)`
 
@@ -88,7 +94,7 @@ e-boekhouden.nl API
 ---
 ### get kostenplaatsen
 ---
-`lijst_kostenplaatsen = Kostenplaatsen(0,0,"")`
+`lijst_kostenplaatsen = eboek.Kostenplaatsen(0,0,"")`
 
 `kostenpl = sessie1.get_kostenplaatsen(lijst_kostenplaatsen)`
 
@@ -99,7 +105,7 @@ e-boekhouden.nl API
 ### get facturen
 ---
 
-`lijst_facturen = Facturen("","","2022-01-01", "2022-03-31")`
+`lijst_facturen = eboek.Facturen("","","2022-01-01", "2022-03-31")`
 
 `fact = sessie1.get_facturen(lijst_facturen)`
 
@@ -114,7 +120,7 @@ e-boekhouden.nl API
 ### add relatie
 ---
 
-`rel = Relatie(0,"2022-03-30","Test","Testbedrijf","","","Straat","Postcode","Plaats","Land","Straat2","Postcode2","Plaats2","Land2", "Tel", "Gsm","","info@raylan.nl","","", "", "", "Dhr", "", "", "B","0", 0, 0, 0)`
+`rel = eboek.Relatie(0,"2022-03-30","Test","Testbedrijf","","","Straat","Postcode","Plaats","Land","Straat2","Postcode2","Plaats2","Land2", "Tel", "Gsm","","info@raylan.nl","","", "", "", "Dhr", "", "", "B","0", 0, 0, 0)`
 
 `nieuwerelatie = sessie1.add_relatie(rel)`
 
@@ -124,7 +130,7 @@ e-boekhouden.nl API
 ### add grootboekrekening
 ---
 
-`grb = Grootboekrekening(0,"100T","Test rekening","BAL","")`
+`grb = eboek.Grootboekrekening(0,"100T","Test rekening","BAL","")`
 
 `nieuwerekening = sessie1.add_grootboekrekening(grb)`
 
@@ -136,4 +142,4 @@ e-boekhouden.nl API
 ### add mutatie
 ---
 
-`mut_nummer = sessie1.add_mutatie(Mutatie("Memoriaal","2021-03-24","1000","","","Test","","IN", [MutatieRegel("1000", "1000", "0", "1000", "0", "0", "0140", 0 )]))`
+`mut_nummer = sessie1.add_mutatie(eboek.Mutatie("Memoriaal","2021-03-24","1000","","","Test","","IN", [eboek.MutatieRegel("1000", "1000", "0", "1000", "0", "0", "0140", 0 )]))`
