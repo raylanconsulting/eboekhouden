@@ -1,5 +1,9 @@
 # eboekhouden
 e-boekhouden.nl API
+
+> this package is heavily inspired by the existing package "eboekhoudenapi", written by Roel van de Boom.
+
+> "get sessioncode" and "get mutaties" are, with slight adaptions, take from this package. 
 ---
 --- 
 This code can be pulled from pypi.org by installing the package "eboekhoudennl_api"
@@ -88,6 +92,7 @@ This code can be pulled from pypi.org by installing the package "eboekhoudennl_a
 ---
 
 ### get mutaties
+  
 ---
 `lijst_mutaties = eboek.Mutaties(0,0,99999,"", "2022-01-01","2022-03-31")`
 
