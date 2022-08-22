@@ -1,7 +1,7 @@
 # eboekhouden
 e-boekhouden.nl API
 
-> this package is heavily inspired by the existing package "eboekhoudenapi", written by Roel van de Boom.
+> this package is heavily inspired by the existing package "eboekhoudenapi", written by Roel van den Boom.
 
 > "get sessioncode" and "get mutaties" are, with slight adaptions, take from this package. 
 ---
