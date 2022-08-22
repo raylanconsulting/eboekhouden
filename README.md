@@ -2,15 +2,15 @@
 e-boekhouden.nl API
 ---
 --- 
-This code can be pulled from pypi.org by installing the package "eboekhouden_api"
-> pip install eboekhouden_api
+This code can be pulled from pypi.org by installing the package "eboekhoudennl_api"
+> pip install eboekhoudennl_api
 ---
 
 ### example code how to use the package is shown below
 
 ---
 
-`from eboekhouden_api import eboek`
+`from eboekhoudennl_api import eboek`
 
 `import logging`
 
